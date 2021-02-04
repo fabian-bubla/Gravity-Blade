@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Walk 1_4.wav-409adfb8cc822d3081dfe1560d84386b.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Walk WAVs/Walk 1_4.wav"
+dest_files=[ "res://.import/Walk 1_4.wav-409adfb8cc822d3081dfe1560d84386b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

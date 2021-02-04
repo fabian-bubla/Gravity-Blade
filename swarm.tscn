@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://PlayerDetectionZone.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Spiderbot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://new_swarm.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 294.776
+
+[sub_resource type="LineShape2D" id=2]
+
+[node name="swarm" type="KinematicBody2D"]
+script = ExtResource( 3 )
+
+[node name="PlayerDetectionZone" parent="." instance=ExtResource( 1 )]
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+shape = SubResource( 1 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 46.0685, 34.5972 )
+
+[node name="Spiderbot" parent="Position2D" instance=ExtResource( 2 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Position2D"]
+scale = Vector2( 0.28, 1 )
+shape = SubResource( 2 )
+disabled = true
+
+[node name="Position2D2" type="Position2D" parent="."]
+position = Vector2( 46.0685, -41.9014 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Position2D2"]
+scale = Vector2( 0.28, 1 )
+shape = SubResource( 2 )
+disabled = true
+
+[node name="Spiderbot" parent="Position2D2" instance=ExtResource( 2 )]
+
+[node name="Position2D3" type="Position2D" parent="."]
+position = Vector2( 64.0685, 0 )
+
+[node name="Spiderbot" parent="Position2D3" instance=ExtResource( 2 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Position2D3"]
+scale = Vector2( 0.28, 1 )
+shape = SubResource( 2 )
+disabled = true
+[connection signal="body_entered" from="PlayerDetectionZone" to="PlayerDetectionZone" method="_on_PlayerDetectionZone_body_entered"]
+[connection signal="body_exited" from="PlayerDetectionZone" to="PlayerDetectionZone" method="_on_PlayerDetectionZone_body_exited"]
+
+[editable path="PlayerDetectionZone"]

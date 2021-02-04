@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Brake3 SFX.wav-24996bf600c2a5978e584ed618a17c50.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Brake3 SFX.wav"
+dest_files=[ "res://.import/Brake3 SFX.wav-24996bf600c2a5978e584ed618a17c50.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

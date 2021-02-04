@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/SFX/Heart Pick Up SFX.wav" type="AudioStream" id=1]
+[ext_resource path="res://HeartPickupSound.gd" type="Script" id=2]
+
+[node name="HeartPickupSound" type="AudioStreamPlayer"]
+stream = ExtResource( 1 )
+autoplay = true
+script = ExtResource( 2 )
+[connection signal="finished" from="." to="." method="_on_HeartPickupSound_finished"]

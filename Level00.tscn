@@ -1,0 +1,98 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://CoralTileMap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://LittleHeart.tscn" type="PackedScene" id=3]
+[ext_resource path="res://SeaweedTileMap.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Pedestal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://PillarTileMap.tscn" type="PackedScene" id=6]
+[ext_resource path="res://new_swarm.tscn" type="PackedScene" id=7]
+[ext_resource path="res://HealthUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Checkpoint.tscn" type="PackedScene" id=9]
+[ext_resource path="res://ChasmTileMap.tscn" type="PackedScene" id=10]
+[ext_resource path="res://TileMaps/MarbleTileMap.tres" type="TileSet" id=11]
+[ext_resource path="res://TileMaps/CoralTileMap2.tres" type="TileSet" id=12]
+[ext_resource path="res://TileMaps/PillarTileMap2.tres" type="TileSet" id=13]
+[ext_resource path="res://MainScene.gd" type="Script" id=14]
+[ext_resource path="res://Assets/bird0.png" type="Texture" id=15]
+
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource( 14 )
+
+[node name="MarbleTileMap" type="TileMap" parent="."]
+z_index = -1
+tile_set = ExtResource( 11 )
+cell_size = Vector2( 16, 16 )
+centered_textures = true
+format = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="SeaweedTileMap" parent="." instance=ExtResource( 4 )]
+
+[node name="bird0" type="Sprite" parent="."]
+position = Vector2( -1964, -92 )
+texture = ExtResource( 15 )
+
+[node name="Pedestal" parent="." instance=ExtResource( 5 )]
+position = Vector2( -1742.41, -93.8479 )
+
+[node name="ChasmTileMap" parent="." instance=ExtResource( 10 )]
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Checkpoint" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( -1612.14, -98.2477 )
+
+[node name="Player" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( -1789.84, -49.6913 )
+MOVE_max_movement_speed = 82
+max_float_vel = 400
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
+remote_path = NodePath("../../../Camera2D")
+
+[node name="new_swarm" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( -1376.12, -100.983 )
+
+[node name="PillarTileMap" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 0, 4 )
+z_as_relative = false
+tile_set = ExtResource( 13 )
+cell_clip_uv = false
+collision_friction = 1.0
+
+[node name="CoralTileMap" parent="YSort" instance=ExtResource( 1 )]
+tile_set = ExtResource( 12 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+centered_textures = false
+
+[node name="Little Hearts Parent" type="Node2D" parent="YSort"]
+
+[node name="Little Heart" parent="YSort/Little Hearts Parent" instance=ExtResource( 3 )]
+position = Vector2( -1652.71, -70.166 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthUI" parent="CanvasLayer" instance=ExtResource( 8 )]
+
+[node name="BlackSquare" type="ColorRect" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 10000.0
+margin_bottom = 1000.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -1789.84, -49.6913 )
+current = true
+smoothing_enabled = true
+smoothing_speed = 2.0
+
+[editable path="ChasmTileMap"]
+
+[editable path="YSort/CoralTileMap"]

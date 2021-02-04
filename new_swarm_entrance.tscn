@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/SFX/Spiderbot Walk SFX.wav" type="AudioStream" id=1]
+[ext_resource path="res://PlayerDetectionZone.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Spiderbot.tscn" type="PackedScene" id=3]
+[ext_resource path="res://new_swarm.gd" type="Script" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 294.776
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
+
+[sub_resource type="LineShape2D" id=3]
+
+[node name="new_swarm" type="KinematicBody2D"]
+script = ExtResource( 4 )
+
+[node name="SpiderbotWalkPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="PlayerDetectionZone" parent="." instance=ExtResource( 2 )]
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+shape = SubResource( 1 )
+
+[node name="Position2D" type="Position2D" parent="."]
+
+[node name="Spiderbot" parent="Position2D" instance=ExtResource( 3 )]
+
+[node name="Sprite" parent="Position2D/Spiderbot" index="0"]
+frame = 44
+
+[node name="AnimationTree" parent="Position2D/Spiderbot" index="3"]
+parameters/playback = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Position2D"]
+scale = Vector2( 0.28, 1 )
+shape = SubResource( 3 )
+disabled = true
+[connection signal="body_entered" from="PlayerDetectionZone" to="PlayerDetectionZone" method="_on_PlayerDetectionZone_body_entered"]
+[connection signal="body_exited" from="PlayerDetectionZone" to="PlayerDetectionZone" method="_on_PlayerDetectionZone_body_exited"]
+
+[editable path="PlayerDetectionZone"]
+
+[editable path="Position2D/Spiderbot"]

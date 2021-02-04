@@ -1,0 +1,106 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Assets/SwordSheet01.png" type="Texture" id=1]
+[ext_resource path="res://GDscripts/KinematicBody2D.gd" type="Script" id=2]
+[ext_resource path="res://Assets/SFX/Pull SFX.wav" type="AudioStream" id=3]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Area2D
+#
+#
+## Declare member variables here. Examples:
+## var a = 2
+## var b = \"text\"
+#
+#
+## Called when the node enters the scene tree for the first time.
+#func _ready():
+#	print('bharea enters the scene tree') # Replace with function body.
+#
+#
+## Called every frame. 'delta' is the elapsed time since the previous frame.
+##func _process(delta):
+##	pass
+"
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 4.66035, 13.0838 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 2.61838, 2.32178 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 2.71048, 2.34587 )
+
+[sub_resource type="Animation" id=5]
+length = 2.0
+loop = true
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sword02:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333, 0.25, 0.291667, 0.333333, 0.375, 0.416667, 0.458333, 0.5, 0.541667, 0.583333, 0.625, 0.666667, 0.708333, 0.75, 0.791667, 0.833333, 0.875, 0.916667, 0.958333, 1, 1.04167, 1.08333, 1.125, 1.16667, 1.20833, 1.25, 1.29167, 1.33333, 1.375, 1.41667, 1.45833, 1.5, 1.54167, 1.58333, 1.625, 1.66667, 1.70833, 1.75, 1.79167, 1.83333, 1.875, 1.91667, 1.95833 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 1.5
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sword02:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333, 0.25, 0.291667, 0.333333, 0.375, 0.416667, 0.458333, 0.5, 0.541667, 0.583333, 0.625, 0.666667, 0.708333, 0.75, 0.791667, 0.833333, 0.875, 0.916667, 0.958333, 1, 1.04167, 1.08333, 1.125, 1.16667, 1.20833, 1.25, 1.29167, 1.33333, 1.375, 1.41667, 1.45833 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35 ]
+}
+
+[node name="Gravityblade" type="KinematicBody2D"]
+position = Vector2( -0.0992126, -3.9685 )
+script = ExtResource( 2 )
+
+[node name="Sword02" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+vframes = 7
+hframes = 12
+frame = 36
+
+[node name="bharea" type="Area2D" parent="."]
+scale = Vector2( 2.40028, 1.49696 )
+collision_mask = 2
+script = SubResource( 1 )
+
+[node name="Swordbox" type="CollisionShape2D" parent="bharea"]
+position = Vector2( 0, 9.53674e-07 )
+scale = Vector2( 0.416618, 0.66802 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bharea"]
+position = Vector2( 0.0774695, 9.39975 )
+scale = Vector2( 1.27066, 0.825354 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="bharea"]
+position = Vector2( 0.175163, -6.74083 )
+scale = Vector2( 1.27066, 0.825354 )
+shape = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Spawn"
+anims/Idle = SubResource( 5 )
+anims/Spawn = SubResource( 6 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+[connection signal="body_entered" from="bharea" to="." method="_on_bharea_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

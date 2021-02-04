@@ -1,0 +1,394 @@
+[gd_scene load_steps=49 format=2]
+
+[ext_resource path="res://Assets/SpiderRobotSpriteSheet.png" type="Texture" id=1]
+[ext_resource path="res://PlayerDetectionZone.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Spiderbot.gd" type="Script" id=3]
+[ext_resource path="res://SpiderbotStats.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Hurtbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Hitbox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://SoftCollision.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/SFX/Spiderbot Death SFX.wav" type="AudioStream" id=8]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 4.36254
+
+[sub_resource type="Animation" id=2]
+resource_name = "death_down"
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "death_left"
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "death_right"
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "down_up"
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131 ]
+}
+
+[sub_resource type="Animation" id=6]
+loop = true
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
+}
+
+[sub_resource type="Animation" id=7]
+loop = true
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47 ]
+}
+
+[sub_resource type="Animation" id=8]
+loop = true
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 ]
+}
+
+[sub_resource type="Animation" id=9]
+loop = true
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35 ]
+}
+
+[sub_resource type="Animation" id=10]
+loop = true
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59 ]
+}
+
+[sub_resource type="Animation" id=11]
+loop = true
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95 ]
+}
+
+[sub_resource type="Animation" id=12]
+loop = true
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71 ]
+}
+
+[sub_resource type="Animation" id=13]
+loop = true
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "death_down"
+
+[sub_resource type="AnimationNodeBlendTree" id=15]
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "death_left"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "idle_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=18]
+blend_point_0/node = SubResource( 14 )
+blend_point_0/pos = Vector2( 0, 1.1 )
+blend_point_1/node = SubResource( 15 )
+blend_point_1/pos = Vector2( 0, -1.1 )
+blend_point_2/node = SubResource( 16 )
+blend_point_2/pos = Vector2( -1, 0 )
+blend_point_3/node = SubResource( 17 )
+blend_point_3/pos = Vector2( 1, 0 )
+min_space = Vector2( -1, -1.1 )
+max_space = Vector2( 1, 1.1 )
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "idle_left"
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "idle_down"
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "idle_up"
+
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "idle_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=23]
+blend_point_0/node = SubResource( 19 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 20 )
+blend_point_1/pos = Vector2( 0, 1.1 )
+blend_point_2/node = SubResource( 21 )
+blend_point_2/pos = Vector2( 0, -1.1 )
+blend_point_3/node = SubResource( 22 )
+blend_point_3/pos = Vector2( 1, 0 )
+min_space = Vector2( -1, -1.1 )
+max_space = Vector2( 1, 1.1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=24]
+animation = "walk_left"
+
+[sub_resource type="AnimationNodeAnimation" id=25]
+animation = "walk_up"
+
+[sub_resource type="AnimationNodeAnimation" id=26]
+animation = "walk_right"
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "walk_down"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=28]
+blend_point_0/node = SubResource( 24 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 25 )
+blend_point_1/pos = Vector2( 0, -1 )
+blend_point_2/node = SubResource( 26 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 27 )
+blend_point_3/pos = Vector2( 0, 1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+
+[sub_resource type="AnimationNodeStateMachine" id=35]
+states/Death/node = SubResource( 18 )
+states/Death/position = Vector2( 300, 187 )
+states/Idle/node = SubResource( 23 )
+states/Idle/position = Vector2( 205, 70 )
+states/Walk/node = SubResource( 28 )
+states/Walk/position = Vector2( 392, 70 )
+transitions = [ "Idle", "Walk", SubResource( 29 ), "Walk", "Idle", SubResource( 30 ), "Idle", "Death", SubResource( 31 ), "Death", "Idle", SubResource( 32 ), "Death", "Walk", SubResource( 33 ), "Walk", "Death", SubResource( 34 ) ]
+start_node = "Idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=36]
+
+[sub_resource type="CircleShape2D" id=37]
+radius = 9.37003
+
+[sub_resource type="CircleShape2D" id=38]
+radius = 93.7004
+
+[sub_resource type="CircleShape2D" id=39]
+radius = 4.57867
+
+[sub_resource type="CircleShape2D" id=40]
+radius = 5.36454
+
+[node name="Spiderbot" type="KinematicBody2D" groups=[
+"Enemy",
+]]
+collision_layer = 33
+collision_mask = 97
+script = ExtResource( 3 )
+ACCELERATION = 2000
+MAX_SPEED = 500
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+vframes = 12
+hframes = 12
+frame = 41
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/death_down = SubResource( 2 )
+anims/death_left = SubResource( 3 )
+anims/death_right = SubResource( 4 )
+anims/down_up = SubResource( 5 )
+anims/idle_down = SubResource( 6 )
+anims/idle_left = SubResource( 7 )
+anims/idle_right = SubResource( 8 )
+anims/idle_up = SubResource( 9 )
+anims/walk_down = SubResource( 10 )
+anims/walk_left = SubResource( 11 )
+anims/walk_right = SubResource( 12 )
+anims/walk_up = SubResource( 13 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 35 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 36 )
+parameters/Death/blend_position = Vector2( 0, 0 )
+parameters/Idle/blend_position = Vector2( 0, 0 )
+parameters/Walk/blend_position = Vector2( 0, 0 )
+
+[node name="SpiderbotStats" parent="." instance=ExtResource( 4 )]
+
+[node name="Hurtbox" parent="." instance=ExtResource( 5 )]
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource( 37 )
+
+[node name="swarmposition" type="Position2D" parent="."]
+
+[node name="PlayerDetectionZone" parent="." instance=ExtResource( 2 )]
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+shape = SubResource( 38 )
+
+[node name="SoftCollision" parent="." instance=ExtResource( 7 )]
+
+[node name="CollisionShape2D" parent="SoftCollision" index="0"]
+shape = SubResource( 39 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 6 )]
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource( 40 )
+
+[node name="SpiderbotDeathSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+[connection signal="no_health" from="SpiderbotStats" to="." method="_on_SpiderbotStats_no_health"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="body_entered" from="PlayerDetectionZone" to="PlayerDetectionZone" method="_on_PlayerDetectionZone_body_entered"]
+[connection signal="body_exited" from="PlayerDetectionZone" to="PlayerDetectionZone" method="_on_PlayerDetectionZone_body_exited"]
+
+[editable path="Hurtbox"]
+
+[editable path="PlayerDetectionZone"]
+
+[editable path="SoftCollision"]
+
+[editable path="Hitbox"]

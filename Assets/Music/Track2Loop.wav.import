@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Track2Loop.wav-06dac7cfb7e9e531be5a317b1f504f4f.sample"
+
+[deps]
+
+source_file="res://Assets/Music/Track2Loop.wav"
+dest_files=[ "res://.import/Track2Loop.wav-06dac7cfb7e9e531be5a317b1f504f4f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

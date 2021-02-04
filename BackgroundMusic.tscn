@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Music/OGGs/Track4Full.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Assets/Music/OGGs/Track1Loop.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Assets/Music/Track2Loop.wav" type="AudioStream" id=3]
+[ext_resource path="res://BackgroundMusic.gd" type="Script" id=4]
+[ext_resource path="res://Assets/SFX/Start Game SFX.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/SFX/Waterfall Ambience.wav" type="AudioStream" id=6]
+
+[node name="BackgroundMusic" type="Node"]
+script = ExtResource( 4 )
+
+[node name="TrackChill" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+bus = "Track2 - Exploration"
+
+[node name="TrackAction" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "Track3 - Battle"
+
+[node name="TrackWin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+bus = "Track4 - Win"
+
+[node name="StartGameSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "Start "
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="AmbienceSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+bus = "Waterfall Ambience"
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

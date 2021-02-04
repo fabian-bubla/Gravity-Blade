@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://TileMaps/PillarTileMap.tres" type="TileSet" id=1]
+
+[node name="PillarTileMap" type="TileMap"]
+position = Vector2( 0, 1 )
+mode = 2
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 64 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+cell_tile_origin = 2
+cell_y_sort = true
+centered_textures = true
+cell_clip_uv = true
+collision_friction = 0.0
+format = 1
